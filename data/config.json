@@ -1,0 +1,15 @@
+{
+    "inventory_thresholds": {
+        "Infrastructure": 15,
+        "Software": 20,
+        "Security": 10,
+        "Hardware": 5
+    },
+    "bonus_multipliers": {
+        "Tier 1": 0.15,
+        "Tier 2": 0.1,
+        "Tier 3": 0.05
+    },
+    "corporate_tax_rate": 0.21,
+    "discount_rate": 0.08
+}

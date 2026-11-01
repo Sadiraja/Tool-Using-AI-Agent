@@ -1,0 +1,4 @@
+LOW INVENTORY ALERTS:
+- Database Cluster B (Infrastructure): Stock 12 < Min 15
+- Security Suite Pro (Security): Stock 8 < Min 10
+- Backup Appliance (Hardware): Stock 4 < Min 5

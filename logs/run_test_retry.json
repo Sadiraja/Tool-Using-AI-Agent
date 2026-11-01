@@ -1,0 +1,73 @@
+{
+  "task_id": "test_retry",
+  "task_name": "test_retry",
+  "user_prompt": "Calculate 50 * 2",
+  "status": "SUCCESS",
+  "max_steps_allowed": 5,
+  "total_steps": 3,
+  "total_tool_calls": 2,
+  "total_retries": 1,
+  "steps": [
+    {
+      "step_number": 1,
+      "thought": "Attempting calculation with invalid precision.",
+      "is_final": false,
+      "final_answer": null,
+      "tool_call": {
+        "tool_name": "calculator",
+        "arguments": {
+          "expression": "50 * 2",
+          "precision": "not_an_int"
+        },
+        "success": false,
+        "result": null,
+        "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
+        "execution_time_ms": 0.06,
+        "retry_attempt": 0
+      },
+      "observation": null,
+      "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
+      "step_duration_ms": 12.09
+    },
+    {
+      "step_number": 2,
+      "thought": "Fixing precision argument to integer 2.",
+      "is_final": false,
+      "final_answer": null,
+      "tool_call": {
+        "tool_name": "calculator",
+        "arguments": {
+          "expression": "50 * 2",
+          "precision": 2
+        },
+        "success": true,
+        "result": {
+          "expression": "50 * 2",
+          "result": 100,
+          "raw_result": 100
+        },
+        "error": null,
+        "execution_time_ms": 0.21,
+        "retry_attempt": 1
+      },
+      "observation": "{\n  \"expression\": \"50 * 2\",\n  \"result\": 100,\n  \"raw_result\": 100\n}",
+      "error": null,
+      "step_duration_ms": 1.41
+    },
+    {
+      "step_number": 3,
+      "thought": "Finished.",
+      "is_final": true,
+      "final_answer": "Computation complete: 100.",
+      "tool_call": null,
+      "observation": null,
+      "error": null,
+      "step_duration_ms": 1.45
+    }
+  ],
+  "final_answer": "Computation complete: 100.",
+  "failure_reason": null,
+  "start_time": 1793560541.9530308,
+  "end_time": 1793560541.9987848,
+  "total_duration_ms": 45.75
+}

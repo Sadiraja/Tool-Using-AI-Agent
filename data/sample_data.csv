@@ -1,0 +1,5 @@
+employee_id,employee_name,target_tier,quota_attainment_pct
+103,Alex Wong,Tier 2,108.5
+104,Sarah Connor,Tier 1,122.0
+105,Michael Scott,Tier 3,94.0
+106,Dwight Schrute,Tier 1,145.2
