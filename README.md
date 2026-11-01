@@ -181,14 +181,26 @@ Start an interactive terminal prompt where you can give multi-step instructions 
 python main.py --interactive
 ```
 
-### Using with External LLMs (OpenAI, Groq, Ollama, OpenRouter)
-The agent natively supports OpenAI-compatible endpoints:
+### Using with OpenRouter & NVIDIA Nemotron (Live LLM)
+The agent natively integrates with **OpenRouter** and NVIDIA models (e.g., `nvidia/nemotron-3.5-lightning`):
+
+```bash
+# In .env or shell environment:
+OPENROUTER_API_KEY="sk-or-v1-..."
+OPENROUTER_MODEL="nvidia/nemotron-3.5-lightning"
+OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
+
+# Run with NVIDIA Nemotron
+python main.py --llm openrouter --model nvidia/nemotron-3.5-lightning --prompt "Find the employee with highest salary in the database and calculate their salary divided by 12."
+```
+
+### Using with Alternative Providers (OpenAI, Groq, Ollama)
 ```bash
 # Set your API key
 set OPENAI_API_KEY="your-api-key"
 
 # Run with OpenAI gpt-4o-mini
-python main.py --llm openai --model gpt-4o-mini --prompt "Find the employee with highest salary in engineering and calculate their monthly net pay."
+python main.py --llm openai --model gpt-4o-mini --prompt "Calculate the total sales revenue and write a brief summary."
 ```
 
 ---

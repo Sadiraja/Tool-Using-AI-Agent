@@ -4,7 +4,14 @@ Interactive Command-Line Interface and Entrypoint for Tool-Using AI Agent.
 
 import argparse
 import sys
-from agent import Agent, ToolRegistry, AgentLogger, OpenAICompatibleLLMClient, RuleBasedReActLLMClient
+from agent import (
+    Agent,
+    ToolRegistry,
+    AgentLogger,
+    OpenAICompatibleLLMClient,
+    OpenRouterNvidiaLLMClient,
+    RuleBasedReActLLMClient
+)
 from tools import (
     CalculatorTool,
     DatabaseQueryTool,
@@ -15,7 +22,11 @@ from tools import (
 from run_benchmark import BENCHMARK_TASKS, run_all_benchmarks, generate_benchmark_report
 
 
-def build_default_agent(llm_choice: str = "mock", max_steps: int = 10, model: str = "gpt-4o-mini") -> Agent:
+def build_default_agent(
+    llm_choice: str = "openrouter",
+    max_steps: int = 10,
+    model: str = "nvidia/nemotron-3.5-lightning"
+) -> Agent:
     registry = ToolRegistry()
     registry.register(CalculatorTool())
     registry.register(DatabaseQueryTool())
@@ -25,7 +36,9 @@ def build_default_agent(llm_choice: str = "mock", max_steps: int = 10, model: st
 
     logger = AgentLogger(log_dir="logs")
 
-    if llm_choice == "openai":
+    if llm_choice == "openrouter":
+        llm = OpenRouterNvidiaLLMClient(model=model)
+    elif llm_choice == "openai":
         llm = OpenAICompatibleLLMClient(model=model)
     else:
         llm = RuleBasedReActLLMClient()
@@ -78,8 +91,8 @@ def main():
     parser.add_argument("--benchmark", action="store_true", help="Run the full 10-task benchmark evaluation suite")
     parser.add_argument("--task", type=str, default=None, help="Run a specific benchmark task by ID (e.g. task_01 to task_10)")
     parser.add_argument("--prompt", type=str, default=None, help="Run a single custom prompt")
-    parser.add_argument("--llm", type=str, choices=["mock", "openai"], default="mock", help="Select LLM provider ('mock' or 'openai')")
-    parser.add_argument("--model", type=str, default="gpt-4o-mini", help="Model name for OpenAI-compatible client")
+    parser.add_argument("--llm", type=str, choices=["openrouter", "openai", "mock"], default="openrouter", help="Select LLM provider ('openrouter', 'openai', or 'mock')")
+    parser.add_argument("--model", type=str, default="nvidia/nemotron-3.5-lightning", help="Model name (e.g. nvidia/nemotron-3.5-lightning)")
     parser.add_argument("--max-steps", type=int, default=10, help="Maximum allowed reasoning/tool steps")
     parser.add_argument("--interactive", action="store_true", help="Start an interactive session")
 

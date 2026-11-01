@@ -69,12 +69,12 @@
           "database": "company.db"
         },
         "error": null,
-        "execution_time_ms": 3.53,
+        "execution_time_ms": 1.41,
         "retry_attempt": 0
       },
       "observation": "{\n  \"columns\": [\n    \"id\",\n    \"name\",\n    \"category\",\n    \"stock_quantity\"\n  ],\n  \"row_count\": 6,\n  \"has_more\": false,\n  \"rows\": [\n    {\n      \"id\": 1,\n      \"name\": \"Cloud Server A\",\n      \"category\": \"Infrastructure\",\n      \"stock_quantity\": 45\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Database Cluster B\",\n      \"category\": \"Infrastructure\",\n      \"stock_quantity\": 12\n    },\n    {\n      \"id\": 3,\n      \"name\": \"Enterprise CRM License\",\n      \"category\": \"Software\",\n      \"stock_quantity\": 110\n    },\n    {\n      \"id\": 4,\n      \"name\": \"Security Suite Pro\",\n      \"category\": \"Security\",\n      \"stock_quantity\": 8\n    },\n    {\n      \"id\": 5,\n      \"name\": \"Analytics Dashboard\",\n      \"category\": \"Software\",\n      \"stock_quantity\": 65\n    },\n    {\n      \"id\": 6,\n      \"name\": \"Backup Appliance\",\n      \"category\": \"Hardware\",\n      \"stock_quantity\": 4\n    }\n  ],\n  \"database\": \"company.db\"\n}",
       "error": null,
-      "step_duration_ms": 18.58
+      "step_duration_ms": 5.13
     },
     {
       "step_number": 2,
@@ -107,12 +107,12 @@
           }
         },
         "error": null,
-        "execution_time_ms": 1.67,
+        "execution_time_ms": 0.65,
         "retry_attempt": 0
       },
       "observation": "{\n  \"type\": \"json\",\n  \"file_path\": \"data/config.json\",\n  \"content\": {\n    \"inventory_thresholds\": {\n      \"Infrastructure\": 15,\n      \"Software\": 20,\n      \"Security\": 10,\n      \"Hardware\": 5\n    },\n    \"bonus_multipliers\": {\n      \"Tier 1\": 0.15,\n      \"Tier 2\": 0.1,\n      \"Tier 3\": 0.05\n    },\n    \"corporate_tax_rate\": 0.21,\n    \"discount_rate\": 0.08\n  }\n}",
       "error": null,
-      "step_duration_ms": 21.07
+      "step_duration_ms": 6.54
     },
     {
       "step_number": 3,
@@ -136,12 +136,12 @@
           "total_file_size": 180
         },
         "error": null,
-        "execution_time_ms": 2.71,
+        "execution_time_ms": 1.35,
         "retry_attempt": 0
       },
       "observation": "{\n  \"status\": \"success\",\n  \"file_path\": \"data/inventory_alerts.txt\",\n  \"resolved_path\": \"C:\\\\Python Project\\\\Tool-Using AI Agent\\\\data\\\\inventory_alerts.txt\",\n  \"mode\": \"write\",\n  \"bytes_written\": 176,\n  \"total_file_size\": 180\n}",
       "error": null,
-      "step_duration_ms": 13.25
+      "step_duration_ms": 4.85
     },
     {
       "step_number": 4,
@@ -151,12 +151,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 12.61
+      "step_duration_ms": 5.11
     }
   ],
   "final_answer": "Inventory audit completed: 3 items are below threshold (Database Cluster B: 12/15, Security Suite Pro: 8/10, Backup Appliance: 4/5). Alert report saved to 'data/inventory_alerts.txt'.",
   "failure_reason": null,
-  "start_time": 1793560617.786477,
-  "end_time": 1793560617.9540591,
-  "total_duration_ms": 167.58
+  "start_time": 1793561645.125301,
+  "end_time": 1793561645.166831,
+  "total_duration_ms": 41.53
 }

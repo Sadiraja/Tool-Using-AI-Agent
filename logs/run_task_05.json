@@ -21,12 +21,12 @@
         "success": false,
         "result": null,
         "error": "Execution failed after 3 attempts. Error: SQLite execution error: no such table: staff_members",
-        "execution_time_ms": 1523.84,
+        "execution_time_ms": 1504.16,
         "retry_attempt": 0
       },
       "observation": null,
       "error": "Execution failed after 3 attempts. Error: SQLite execution error: no such table: staff_members",
-      "step_duration_ms": 1538.78
+      "step_duration_ms": 1507.75
     },
     {
       "step_number": 2,
@@ -62,12 +62,12 @@
           "database": "company.db"
         },
         "error": null,
-        "execution_time_ms": 28.21,
+        "execution_time_ms": 0.67,
         "retry_attempt": 1
       },
       "observation": "{\n  \"columns\": [\n    \"name\"\n  ],\n  \"row_count\": 4,\n  \"has_more\": false,\n  \"rows\": [\n    {\n      \"name\": \"departments\"\n    },\n    {\n      \"name\": \"employees\"\n    },\n    {\n      \"name\": \"products\"\n    },\n    {\n      \"name\": \"sales\"\n    }\n  ],\n  \"database\": \"company.db\"\n}",
       "error": null,
-      "step_duration_ms": 180.61
+      "step_duration_ms": 2.82
     },
     {
       "step_number": 3,
@@ -94,12 +94,12 @@
           "database": "company.db"
         },
         "error": null,
-        "execution_time_ms": 8.47,
+        "execution_time_ms": 0.96,
         "retry_attempt": 0
       },
       "observation": "{\n  \"columns\": [\n    \"total_employees\"\n  ],\n  \"row_count\": 1,\n  \"has_more\": false,\n  \"rows\": [\n    {\n      \"total_employees\": 10\n    }\n  ],\n  \"database\": \"company.db\"\n}",
       "error": null,
-      "step_duration_ms": 31.1
+      "step_duration_ms": 4.34
     },
     {
       "step_number": 4,
@@ -109,12 +109,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 24.86
+      "step_duration_ms": 2.38
     }
   ],
   "final_answer": "Successfully recovered from schema error by inspecting sqlite_master. The correct table is 'employees', with a total staff headcount of 10.",
   "failure_reason": null,
-  "start_time": 1793560617.9620082,
-  "end_time": 1793560620.0269861,
-  "total_duration_ms": 2064.98
+  "start_time": 1793561645.172568,
+  "end_time": 1793561646.701774,
+  "total_duration_ms": 1529.21
 }

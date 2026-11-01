@@ -22,12 +22,12 @@
         "success": false,
         "result": null,
         "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
-        "execution_time_ms": 0.06,
+        "execution_time_ms": 0.04,
         "retry_attempt": 0
       },
       "observation": null,
       "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
-      "step_duration_ms": 12.09
+      "step_duration_ms": 11.44
     },
     {
       "step_number": 2,
@@ -47,12 +47,12 @@
           "raw_result": 100
         },
         "error": null,
-        "execution_time_ms": 0.21,
+        "execution_time_ms": 0.19,
         "retry_attempt": 1
       },
       "observation": "{\n  \"expression\": \"50 * 2\",\n  \"result\": 100,\n  \"raw_result\": 100\n}",
       "error": null,
-      "step_duration_ms": 1.41
+      "step_duration_ms": 1.47
     },
     {
       "step_number": 3,
@@ -62,12 +62,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 1.45
+      "step_duration_ms": 0.76
     }
   ],
   "final_answer": "Computation complete: 100.",
   "failure_reason": null,
-  "start_time": 1793560541.9530308,
-  "end_time": 1793560541.9987848,
-  "total_duration_ms": 45.75
+  "start_time": 1793561644.1073217,
+  "end_time": 1793561644.149044,
+  "total_duration_ms": 41.72
 }

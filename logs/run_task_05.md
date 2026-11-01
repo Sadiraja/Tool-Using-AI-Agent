@@ -5,7 +5,7 @@
 - **Total Steps**: 4 (Max Allowed: 6)
 - **Tool Invocations**: 3
 - **Retries Triggered**: 1
-- **Total Duration**: 2064.98 ms
+- **Total Duration**: 1529.21 ms
 
 ## User Prompt
 > Task 05: Query staff headcount from table staff_members (intentional schema typo). Catch the error, inspect schema, and retry.
@@ -25,7 +25,7 @@ I will attempt to query staff headcount from 'staff_members'.
 ```
 - **Error / Warning:**
 > ⚠️ Execution failed after 3 attempts. Error: SQLite execution error: no such table: staff_members
-*Step Duration: 1538.78 ms*
+*Step Duration: 1507.75 ms*
 
 ### Step 2
 **Thought:**
@@ -64,7 +64,7 @@ The previous query failed because 'staff_members' table does not exist. Let me c
   "database": "company.db"
 }
 ```
-*Step Duration: 180.61 ms*
+*Step Duration: 2.82 ms*
 
 ### Step 3
 **Thought:**
@@ -93,13 +93,13 @@ The schema shows the table is actually named 'employees'. Now I will execute the
   "database": "company.db"
 }
 ```
-*Step Duration: 31.10 ms*
+*Step Duration: 4.34 ms*
 
 ### Step 4 (Final Answer)
 **Thought:**
 I have successfully recovered from the schema error, queried the correct 'employees' table, and obtained the total headcount (10 employees).
 
-*Step Duration: 24.86 ms*
+*Step Duration: 2.38 ms*
 
 ## Final Outcome
 **Final Answer:**

@@ -111,7 +111,10 @@ BENCHMARK_TASKS: List[Dict[str, Any]] = [
 ]
 
 
-def create_agent(max_steps: int = 10) -> Agent:
+from agent import Agent, ToolRegistry, RuleBasedReActLLMClient, OpenRouterNvidiaLLMClient, AgentLogger
+
+
+def create_agent(max_steps: int = 10, llm_type: str = "mock", model: str = "nvidia/nemotron-3.5-lightning") -> Agent:
     registry = ToolRegistry()
     registry.register(CalculatorTool())
     registry.register(DatabaseQueryTool())
@@ -120,7 +123,10 @@ def create_agent(max_steps: int = 10) -> Agent:
     registry.register(WebSearchTool())
 
     logger = AgentLogger(log_dir="logs")
-    llm = RuleBasedReActLLMClient()
+    if llm_type == "openrouter":
+        llm = OpenRouterNvidiaLLMClient(model=model)
+    else:
+        llm = RuleBasedReActLLMClient()
 
     return Agent(
         registry=registry,
@@ -130,9 +136,9 @@ def create_agent(max_steps: int = 10) -> Agent:
     )
 
 
-def run_all_benchmarks() -> List[Dict[str, Any]]:
+def run_all_benchmarks(llm_type: str = "mock", model: str = "nvidia/nemotron-3.5-lightning") -> List[Dict[str, Any]]:
     print("=" * 80)
-    print("STARTING TOOL-USING AI AGENT 10-TASK BENCHMARK SUITE")
+    print(f"STARTING TOOL-USING AI AGENT 10-TASK BENCHMARK SUITE (LLM: {llm_type.upper()})")
     print("=" * 80)
 
     results = []
@@ -143,7 +149,7 @@ def run_all_benchmarks() -> List[Dict[str, Any]]:
         prompt = task_info["prompt"]
         max_steps = task_info["max_steps"]
 
-        agent = create_agent(max_steps=max_steps)
+        agent = create_agent(max_steps=max_steps, llm_type=llm_type, model=model)
         run_log = agent.run(task_prompt=prompt, task_id=task_id, task_name=task_name)
 
         is_as_expected = (run_log.status == task_info["expected_status"])
@@ -224,7 +230,13 @@ def generate_benchmark_report(results: List[Dict[str, Any]]) -> str:
 
 
 if __name__ == "__main__":
-    results = run_all_benchmarks()
+    import argparse
+    parser = argparse.ArgumentParser(description="Run 10-Task Benchmark")
+    parser.add_argument("--llm", type=str, choices=["mock", "openrouter"], default="mock", help="LLM backend")
+    parser.add_argument("--model", type=str, default="nvidia/nemotron-3.5-lightning", help="Model name")
+    args = parser.parse_args()
+
+    results = run_all_benchmarks(llm_type=args.llm, model=args.model)
     report = generate_benchmark_report(results)
     print("\n" + "=" * 80)
     print("BENCHMARK REPORT GENERATED AT BENCHMARK_REPORT.md")

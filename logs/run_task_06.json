@@ -22,12 +22,12 @@
         "success": false,
         "result": null,
         "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
-        "execution_time_ms": 0.15,
+        "execution_time_ms": 0.02,
         "retry_attempt": 0
       },
       "observation": null,
       "error": "Argument validation failed:\nField 'precision': Input should be a valid integer, unable to parse string as an integer",
-      "step_duration_ms": 29.51
+      "step_duration_ms": 3.19
     },
     {
       "step_number": 2,
@@ -47,12 +47,12 @@
           "raw_result": 65249.99999999999
         },
         "error": null,
-        "execution_time_ms": 0.21,
+        "execution_time_ms": 0.06,
         "retry_attempt": 1
       },
       "observation": "{\n  \"expression\": \"450000 * 0.145\",\n  \"result\": 65250.0,\n  \"raw_result\": 65249.99999999999\n}",
       "error": null,
-      "step_duration_ms": 20.36
+      "step_duration_ms": 2.84
     },
     {
       "step_number": 3,
@@ -62,12 +62,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 15.54
+      "step_duration_ms": 2.05
     }
   ],
   "final_answer": "Argument validation error was successfully intercepted and corrected. 14.5% overhead on $450,000 budget is $65,250.00.",
   "failure_reason": null,
-  "start_time": 1793560620.043096,
-  "end_time": 1793560620.1803834,
-  "total_duration_ms": 137.29
+  "start_time": 1793561646.705971,
+  "end_time": 1793561646.7208133,
+  "total_duration_ms": 14.84
 }

@@ -28,12 +28,12 @@
           "content": "QUARTERLY FINANCIAL & STRATEGIC PROJECTIONS (FY2024)\n====================================================\nDepartment Targets:\n- Sales Q1 Revenue Benchmark Target: $65,000.00\n- Engineering Research Overhead Allocation: 14.5% of department budget\n- Minimum Acceptable Stock Margin: 12 units for mission-critical hardware/security items\n\nBonus Computation Policy:\nBonus payout = Base Salary * Bonus Tier Multiplier * (Quota Attainment / 100)\n\nExternal Competitor Intel:\nCompetitor Apex Dynamics posted Q1 cloud revenues of $84,200.00.\nOur internal target was to achieve at least 80% of Apex Dynamics cloud sales volume.\n"
         },
         "error": null,
-        "execution_time_ms": 2.46,
+        "execution_time_ms": 0.57,
         "retry_attempt": 0
       },
       "observation": "{\n  \"type\": \"text\",\n  \"file_path\": \"data/company_notes.txt\",\n  \"start_line\": 1,\n  \"end_line\": 13,\n  \"total_lines\": 13,\n  \"content\": \"QUARTERLY FINANCIAL & STRATEGIC PROJECTIONS (FY2024)\\n====================================================\\nDepartment Targets:\\n- Sales Q1 Revenue Benchmark Target: $65,000.00\\n- Engineering Research Overhead Allocation: 14.5% of department budget\\n- Minimum Acceptable Stock Margin: 12 units for mission-critical hardware/security items\\n\\nBonus Computation Policy:\\nBonus payout = Base Salary * Bonus Tier Multiplier * (Quota Attainment / 100)\\n\\nExternal Competitor Intel:\\nCompetitor Apex Dynamics posted Q1 cloud revenues of $84,200.00.\\nOur internal target was to achieve at least 80% of Apex Dynamics cloud sales volume.\\n\"\n}",
       "error": null,
-      "step_duration_ms": 18.52
+      "step_duration_ms": 4.56
     },
     {
       "step_number": 2,
@@ -65,12 +65,12 @@
           ]
         },
         "error": null,
-        "execution_time_ms": 600.09,
+        "execution_time_ms": 787.08,
         "retry_attempt": 0
       },
       "observation": "{\n  \"query\": \"Apex Dynamics revenue\",\n  \"engine\": \"curated_fallback\",\n  \"total_results\": 1,\n  \"results\": [\n    {\n      \"keywords\": [\n        \"apex\",\n        \"dynamics\",\n        \"revenue\"\n      ],\n      \"title\": \"Apex Dynamics FY2024 Quarterly Financial Release\",\n      \"snippet\": \"Apex Dynamics reported Q1 cloud software revenues of $84,200.00, representing a 14% year-over-year growth.\",\n      \"source\": \"https://finance.example.com/apex-dynamics-q1\"\n    }\n  ]\n}",
       "error": null,
-      "step_duration_ms": 617.23
+      "step_duration_ms": 789.45
     },
     {
       "step_number": 3,
@@ -90,12 +90,12 @@
           "raw_result": 67360.0
         },
         "error": null,
-        "execution_time_ms": 0.29,
+        "execution_time_ms": 0.09,
         "retry_attempt": 0
       },
       "observation": "{\n  \"expression\": \"84200 * 0.80\",\n  \"result\": 67360.0,\n  \"raw_result\": 67360.0\n}",
       "error": null,
-      "step_duration_ms": 12.79
+      "step_duration_ms": 4.66
     },
     {
       "step_number": 4,
@@ -105,12 +105,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 11.34
+      "step_duration_ms": 5.51
     }
   ],
   "final_answer": "Apex Dynamics reported Q1 cloud revenue of $84,200.00. The 80% benchmark is $67,360.00, which is $2,360.00 higher than the internal sales benchmark of $65,000.00.",
   "failure_reason": null,
-  "start_time": 1793560620.189941,
-  "end_time": 1793560620.9912605,
-  "total_duration_ms": 801.32
+  "start_time": 1793561646.724684,
+  "end_time": 1793561647.5497003,
+  "total_duration_ms": 825.02
 }

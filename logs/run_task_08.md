@@ -5,7 +5,7 @@
 - **Total Steps**: 5 (Max Allowed: 5)
 - **Tool Invocations**: 5
 - **Retries Triggered**: 0
-- **Total Duration**: 2975.81 ms
+- **Total Duration**: 2888.34 ms
 
 ## User Prompt
 > Task 08: Search for non-existent cryptographic ledger key in an unsolvable circular dependency to test step limit enforcement.
@@ -39,7 +39,7 @@ Attempt 1: Searching for non-existent cryptographic ledger key in circular depen
   ]
 }
 ```
-*Step Duration: 670.96 ms*
+*Step Duration: 561.90 ms*
 
 ### Step 2
 **Thought:**
@@ -68,7 +68,7 @@ Attempt 2: Searching for non-existent cryptographic ledger key in circular depen
   ]
 }
 ```
-*Step Duration: 559.72 ms*
+*Step Duration: 548.08 ms*
 
 ### Step 3
 **Thought:**
@@ -97,7 +97,7 @@ Attempt 3: Searching for non-existent cryptographic ledger key in circular depen
   ]
 }
 ```
-*Step Duration: 566.49 ms*
+*Step Duration: 567.18 ms*
 
 ### Step 4
 **Thought:**
@@ -126,7 +126,7 @@ Attempt 4: Searching for non-existent cryptographic ledger key in circular depen
   ]
 }
 ```
-*Step Duration: 540.70 ms*
+*Step Duration: 579.64 ms*
 
 ### Step 5
 **Thought:**
@@ -155,7 +155,7 @@ Attempt 5: Searching for non-existent cryptographic ledger key in circular depen
   ]
 }
 ```
-*Step Duration: 569.28 ms*
+*Step Duration: 587.24 ms*
 
 ## Final Outcome
 **Failure Analysis:**

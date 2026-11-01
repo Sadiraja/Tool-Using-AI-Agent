@@ -5,7 +5,7 @@
 - **Total Steps**: 3 (Max Allowed: 6)
 - **Tool Invocations**: 2
 - **Retries Triggered**: 0
-- **Total Duration**: 182.93 ms
+- **Total Duration**: 39.37 ms
 
 ## User Prompt
 > Calculate the total revenue and average order value for the Sales department from the database.
@@ -88,7 +88,7 @@ To calculate total revenue and average order value for the Sales department, I f
   "database": "company.db"
 }
 ```
-*Step Duration: 46.14 ms*
+*Step Duration: 11.33 ms*
 
 ### Step 2
 **Thought:**
@@ -110,13 +110,13 @@ I have retrieved the sales transactions. Now I need to compute the exact total r
   "raw_result": 7060.0
 }
 ```
-*Step Duration: 14.34 ms*
+*Step Duration: 7.84 ms*
 
 ### Step 3 (Final Answer)
 **Thought:**
 I have queried the database and calculated the revenue metrics. Total sales revenue is $70,600.00 across 10 transactions, yielding an average order value of $7,060.00.
 
-*Step Duration: 18.92 ms*
+*Step Duration: 3.58 ms*
 
 ## Final Outcome
 **Final Answer:**

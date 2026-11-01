@@ -5,7 +5,7 @@
 - **Total Steps**: 4 (Max Allowed: 6)
 - **Tool Invocations**: 3
 - **Retries Triggered**: 0
-- **Total Duration**: 167.58 ms
+- **Total Duration**: 41.53 ms
 
 ## User Prompt
 > Audit product stock levels from the database against category thresholds in config.json and write an inventory alert report.
@@ -75,7 +75,7 @@ I need to query the current stock levels of all products from the database.
   "database": "company.db"
 }
 ```
-*Step Duration: 18.58 ms*
+*Step Duration: 5.13 ms*
 
 ### Step 2
 **Thought:**
@@ -110,7 +110,7 @@ I have the product stock levels. Now I must read the category threshold limits f
   }
 }
 ```
-*Step Duration: 21.07 ms*
+*Step Duration: 6.54 ms*
 
 ### Step 3
 **Thought:**
@@ -136,13 +136,13 @@ Backup Appliance (Hardware) has stock 4 < threshold 5. Security Suite Pro (Secur
   "total_file_size": 180
 }
 ```
-*Step Duration: 13.25 ms*
+*Step Duration: 4.85 ms*
 
 ### Step 4 (Final Answer)
 **Thought:**
 The inventory analysis is complete and the alert file has been persisted.
 
-*Step Duration: 12.61 ms*
+*Step Duration: 5.11 ms*
 
 ## Final Outcome
 **Final Answer:**

@@ -5,7 +5,7 @@
 - **Total Steps**: 4 (Max Allowed: 4)
 - **Tool Invocations**: 4
 - **Retries Triggered**: 0
-- **Total Duration**: 31.31 ms
+- **Total Duration**: 20.44 ms
 
 ## User Prompt
 > Trapped task
@@ -31,7 +31,7 @@ Still searching for missing data...
   "raw_result": 2
 }
 ```
-*Step Duration: 3.71 ms*
+*Step Duration: 1.49 ms*
 
 ### Step 2
 **Thought:**
@@ -52,7 +52,7 @@ Still searching for missing data...
   "raw_result": 2
 }
 ```
-*Step Duration: 1.53 ms*
+*Step Duration: 0.89 ms*
 
 ### Step 3
 **Thought:**
@@ -73,7 +73,7 @@ Still searching for missing data...
   "raw_result": 2
 }
 ```
-*Step Duration: 1.63 ms*
+*Step Duration: 0.83 ms*
 
 ### Step 4
 **Thought:**
@@ -94,7 +94,7 @@ Still searching for missing data...
   "raw_result": 2
 }
 ```
-*Step Duration: 1.11 ms*
+*Step Duration: 0.79 ms*
 
 ## Final Outcome
 **Failure Analysis:**

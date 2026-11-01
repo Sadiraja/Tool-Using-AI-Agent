@@ -33,6 +33,47 @@ class BaseLLMClient(ABC):
         pass
 
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
+def _extract_json_from_response(raw_content: str) -> Dict[str, Any]:
+    """Robustly parses JSON from LLM output, handling markdown code fences and whitespace."""
+    if not raw_content:
+        return {}
+
+    cleaned = raw_content.strip()
+
+    # Direct parse attempt
+    try:
+        return json.loads(cleaned)
+    except Exception:
+        pass
+
+    # Extract ```json ... ``` block
+    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", cleaned, re.DOTALL)
+    if fence_match:
+        try:
+            return json.loads(fence_match.group(1))
+        except Exception:
+            pass
+
+    # Extract outermost { ... }
+    brace_match = re.search(r"(\{.*\})", cleaned, re.DOTALL)
+    if brace_match:
+        try:
+            return json.loads(brace_match.group(1))
+        except Exception:
+            pass
+
+    return {
+        "thought": "Direct response without JSON schema.",
+        "action": None,
+        "action_input": None,
+        "final_answer": cleaned
+    }
+
+
 class OpenAICompatibleLLMClient(BaseLLMClient):
     """
     Client for OpenAI, Groq, Ollama, OpenRouter, or Gemini OpenAI-compatible endpoints.
@@ -42,17 +83,35 @@ class OpenAICompatibleLLMClient(BaseLLMClient):
         self,
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
-        model: str = "gpt-4o-mini"
+        model: str = "gpt-4o-mini",
+        extra_headers: Optional[Dict[str, str]] = None
     ):
         try:
             from openai import OpenAI
         except ImportError:
             raise ImportError("Please install openai package: pip install openai")
 
-        self.api_key = api_key or os.environ.get("OPENAI_API_KEY") or os.environ.get("GROQ_API_KEY")
-        self.base_url = base_url or os.environ.get("OPENAI_BASE_URL")
+        self.api_key = (
+            api_key
+            or os.environ.get("OPENROUTER_API_KEY")
+            or os.environ.get("OPENAI_API_KEY")
+            or os.environ.get("GROQ_API_KEY")
+        )
+        self.base_url = (
+            base_url
+            or os.environ.get("OPENROUTER_BASE_URL")
+            or os.environ.get("OPENAI_BASE_URL")
+        )
         self.model = model
-        self.client = OpenAI(api_key=self.api_key or "sk-dummy-key", base_url=self.base_url)
+        self.extra_headers = extra_headers or {
+            "HTTP-Referer": "https://github.com/Sadiraja/Tool-Using-AI-Agent",
+            "X-Title": "Tool-Using AI Agent"
+        }
+        self.client = OpenAI(
+            api_key=self.api_key or "sk-dummy-key",
+            base_url=self.base_url,
+            default_headers=self.extra_headers
+        )
 
     def plan_step(
         self,
@@ -61,12 +120,15 @@ class OpenAICompatibleLLMClient(BaseLLMClient):
         available_tools: List[Dict[str, Any]],
         retry_context: Optional[str] = None
     ) -> Dict[str, Any]:
+        tools_str = json.dumps(available_tools, indent=2)
         system_prompt = (
             "You are an expert autonomous Tool-Using AI Agent. You complete complex multi-step requests by selecting and calling tools.\n"
+            f"Available tools schema:\n{tools_str}\n\n"
             "At each step, follow the ReAct pattern:\n"
             "1. Thought: Analyze the current state, progress made, and plan what to do next.\n"
-            "2. Action: Choose a tool from the available tools list, or declare completion.\n"
-            "3. Action Input: Provide strictly valid JSON dictionary matching the tool's parameter schema.\n\n"
+            "2. Action: Choose an exact tool name from available tools, or null if finished.\n"
+            "3. Action Input: Provide strictly valid JSON dictionary matching the tool's parameter schema, or null if finished.\n"
+            "4. Final Answer: Provide the final answer when the objective is met, or null if tools are still needed.\n\n"
             "Respond in strictly valid JSON format with keys:\n"
             "{\n"
             '  "thought": "Your reasoning here",\n'
@@ -80,32 +142,57 @@ class OpenAICompatibleLLMClient(BaseLLMClient):
         if retry_context:
             user_content += f"\nATTENTION / ERROR FEEDBACK:\n{retry_context}\nPlease correct your arguments or strategy.\n"
 
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
+        create_kwargs: Dict[str, Any] = {
+            "model": self.model,
+            "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_content}
             ],
-            response_format={"type": "json_object"},
-            temperature=0.0
-        )
+            "temperature": 0.1
+        }
 
-        raw_content = response.choices[0].message.content
+        # Attempt with json_object format first, fallback if model doesn't support json_mode
         try:
-            parsed = json.loads(raw_content)
-            return {
-                "thought": parsed.get("thought", "Proceeding with tool execution."),
-                "action": parsed.get("action"),
-                "action_input": parsed.get("action_input"),
-                "final_answer": parsed.get("final_answer")
-            }
+            response = self.client.chat.completions.create(
+                **create_kwargs,
+                response_format={"type": "json_object"}
+            )
         except Exception:
-            return {
-                "thought": "Raw response parsing error.",
-                "action": None,
-                "action_input": None,
-                "final_answer": raw_content
+            response = self.client.chat.completions.create(**create_kwargs)
+
+        raw_content = response.choices[0].message.content or ""
+        parsed = _extract_json_from_response(raw_content)
+
+        return {
+            "thought": parsed.get("thought", "Analyzing and proceeding."),
+            "action": parsed.get("action"),
+            "action_input": parsed.get("action_input"),
+            "final_answer": parsed.get("final_answer")
+        }
+
+
+class OpenRouterNvidiaLLMClient(OpenAICompatibleLLMClient):
+    """
+    Dedicated client for NVIDIA models hosted on OpenRouter (e.g. nvidia/nemotron-3.5-lightning).
+    """
+
+    def __init__(
+        self,
+        api_key: Optional[str] = None,
+        model: Optional[str] = None
+    ):
+        key = api_key or os.environ.get("OPENROUTER_API_KEY")
+        target_model = model or os.environ.get("OPENROUTER_MODEL") or "nvidia/nemotron-3.5-lightning"
+        base_url = os.environ.get("OPENROUTER_BASE_URL") or "https://openrouter.ai/api/v1"
+        super().__init__(
+            api_key=key,
+            base_url=base_url,
+            model=target_model,
+            extra_headers={
+                "HTTP-Referer": "https://github.com/Sadiraja/Tool-Using-AI-Agent",
+                "X-Title": "Tool-Using AI Agent - NVIDIA Nemotron"
             }
+        )
 
 
 class RuleBasedReActLLMClient(BaseLLMClient):

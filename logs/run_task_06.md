@@ -5,7 +5,7 @@
 - **Total Steps**: 3 (Max Allowed: 6)
 - **Tool Invocations**: 2
 - **Retries Triggered**: 1
-- **Total Duration**: 137.29 ms
+- **Total Duration**: 14.84 ms
 
 ## User Prompt
 > Task 06: Compute 14.5% engineering overhead. Deliberately trigger argument validation failure by sending non-numeric precision, then heal arguments and retry.
@@ -27,7 +27,7 @@ I will calculate the engineering overhead. I will deliberately pass an invalid a
 - **Error / Warning:**
 > ⚠️ Argument validation failed:
 Field 'precision': Input should be a valid integer, unable to parse string as an integer
-*Step Duration: 29.51 ms*
+*Step Duration: 3.19 ms*
 
 ### Step 2
 **Thought:**
@@ -50,13 +50,13 @@ The previous tool call failed validation because 'precision' was passed as a str
   "raw_result": 65249.99999999999
 }
 ```
-*Step Duration: 20.36 ms*
+*Step Duration: 2.84 ms*
 
 ### Step 3 (Final Answer)
 **Thought:**
 The calculation succeeded with validated arguments. The overhead allocation is $65,250.00.
 
-*Step Duration: 15.54 ms*
+*Step Duration: 2.05 ms*
 
 ## Final Outcome
 **Final Answer:**

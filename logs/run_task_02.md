@@ -5,7 +5,7 @@
 - **Total Steps**: 4 (Max Allowed: 6)
 - **Tool Invocations**: 3
 - **Retries Triggered**: 0
-- **Total Duration**: 140.77 ms
+- **Total Duration**: 63.59 ms
 
 ## User Prompt
 > Read the employee performance tiers from CSV, query Sarah Connor's base salary from SQLite, and compute her bonus payout.
@@ -63,7 +63,7 @@ I need to read the employee performance tiers and quota attainments from 'data/s
   "row_count": 4
 }
 ```
-*Step Duration: 18.06 ms*
+*Step Duration: 5.34 ms*
 
 ### Step 2
 **Thought:**
@@ -111,7 +111,7 @@ I now have the performance tiers. Now I must query 'employees' table in the data
   "database": "company.db"
 }
 ```
-*Step Duration: 13.21 ms*
+*Step Duration: 15.05 ms*
 
 ### Step 3
 **Thought:**
@@ -133,13 +133,13 @@ I have the salaries (Sarah Connor id=104 has salary $92,000, Tier 1 = 15%, attai
   "raw_result": 16836.0
 }
 ```
-*Step Duration: 20.89 ms*
+*Step Duration: 7.12 ms*
 
 ### Step 4 (Final Answer)
 **Thought:**
 All steps complete. Sarah Connor's base salary is $92,000.00, Tier 1 bonus rate is 15%, and quota attainment is 122.0%, resulting in a calculated bonus payout of $16,836.00.
 
-*Step Duration: 13.24 ms*
+*Step Duration: 7.22 ms*
 
 ## Final Outcome
 **Final Answer:**

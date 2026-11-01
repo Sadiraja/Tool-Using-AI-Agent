@@ -5,7 +5,7 @@
 - **Total Steps**: 3 (Max Allowed: 5)
 - **Tool Invocations**: 2
 - **Retries Triggered**: 1
-- **Total Duration**: 45.75 ms
+- **Total Duration**: 41.72 ms
 
 ## User Prompt
 > Calculate 50 * 2
@@ -27,7 +27,7 @@ Attempting calculation with invalid precision.
 - **Error / Warning:**
 > ⚠️ Argument validation failed:
 Field 'precision': Input should be a valid integer, unable to parse string as an integer
-*Step Duration: 12.09 ms*
+*Step Duration: 11.44 ms*
 
 ### Step 2
 **Thought:**
@@ -50,13 +50,13 @@ Fixing precision argument to integer 2.
   "raw_result": 100
 }
 ```
-*Step Duration: 1.41 ms*
+*Step Duration: 1.47 ms*
 
 ### Step 3 (Final Answer)
 **Thought:**
 Finished.
 
-*Step Duration: 1.45 ms*
+*Step Duration: 0.76 ms*
 
 ## Final Outcome
 **Final Answer:**

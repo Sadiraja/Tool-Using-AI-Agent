@@ -57,12 +57,12 @@
           "row_count": 4
         },
         "error": null,
-        "execution_time_ms": 1.34,
+        "execution_time_ms": 0.8,
         "retry_attempt": 0
       },
       "observation": "{\n  \"type\": \"csv\",\n  \"file_path\": \"data/sample_data.csv\",\n  \"header\": [\n    \"employee_id\",\n    \"employee_name\",\n    \"target_tier\",\n    \"quota_attainment_pct\"\n  ],\n  \"rows\": [\n    [\n      \"103\",\n      \"Alex Wong\",\n      \"Tier 2\",\n      \"108.5\"\n    ],\n    [\n      \"104\",\n      \"Sarah Connor\",\n      \"Tier 1\",\n      \"122.0\"\n    ],\n    [\n      \"105\",\n      \"Michael Scott\",\n      \"Tier 3\",\n      \"94.0\"\n    ],\n    [\n      \"106\",\n      \"Dwight Schrute\",\n      \"Tier 1\",\n      \"145.2\"\n    ]\n  ],\n  \"row_count\": 4\n}",
       "error": null,
-      "step_duration_ms": 18.06
+      "step_duration_ms": 5.34
     },
     {
       "step_number": 2,
@@ -108,12 +108,12 @@
           "database": "company.db"
         },
         "error": null,
-        "execution_time_ms": 3.39,
+        "execution_time_ms": 9.29,
         "retry_attempt": 0
       },
       "observation": "{\n  \"columns\": [\n    \"id\",\n    \"name\",\n    \"salary\"\n  ],\n  \"row_count\": 4,\n  \"has_more\": false,\n  \"rows\": [\n    {\n      \"id\": 103,\n      \"name\": \"Alex Wong\",\n      \"salary\": 85000.0\n    },\n    {\n      \"id\": 104,\n      \"name\": \"Sarah Connor\",\n      \"salary\": 92000.0\n    },\n    {\n      \"id\": 105,\n      \"name\": \"Michael Scott\",\n      \"salary\": 98000.0\n    },\n    {\n      \"id\": 106,\n      \"name\": \"Dwight Schrute\",\n      \"salary\": 95000.0\n    }\n  ],\n  \"database\": \"company.db\"\n}",
       "error": null,
-      "step_duration_ms": 13.21
+      "step_duration_ms": 15.05
     },
     {
       "step_number": 3,
@@ -133,12 +133,12 @@
           "raw_result": 16836.0
         },
         "error": null,
-        "execution_time_ms": 0.23,
+        "execution_time_ms": 0.18,
         "retry_attempt": 0
       },
       "observation": "{\n  \"expression\": \"92000 * 0.15 * (122.0 / 100)\",\n  \"result\": 16836.0,\n  \"raw_result\": 16836.0\n}",
       "error": null,
-      "step_duration_ms": 20.89
+      "step_duration_ms": 7.12
     },
     {
       "step_number": 4,
@@ -148,12 +148,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 13.24
+      "step_duration_ms": 7.22
     }
   ],
   "final_answer": "Employee Sarah Connor (ID: 104) has a base salary of $92,000.00. Based on Tier 1 multiplier (15%) and 122.0% quota attainment, her computed bonus payout is $16,836.00.",
   "failure_reason": null,
-  "start_time": 1793560616.8440728,
-  "end_time": 1793560616.9848404,
-  "total_duration_ms": 140.77
+  "start_time": 1793561644.234396,
+  "end_time": 1793561644.2979903,
+  "total_duration_ms": 63.59
 }

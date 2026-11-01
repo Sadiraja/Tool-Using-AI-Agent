@@ -46,12 +46,12 @@
           ]
         },
         "error": null,
-        "execution_time_ms": 647.13,
+        "execution_time_ms": 774.24,
         "retry_attempt": 0
       },
       "observation": "{\n  \"query\": \"Tokyo population\",\n  \"engine\": \"curated_fallback\",\n  \"total_results\": 2,\n  \"results\": [\n    {\n      \"keywords\": [\n        \"tokyo\",\n        \"population\"\n      ],\n      \"title\": \"Tokyo Demographics & Population Overview\",\n      \"snippet\": \"As of recent census data, Tokyo metropolitan area has a population of approximately 14,000,000 residents within the prefecture, and 37,400,000 in the greater metro area.\",\n      \"source\": \"https://worldpopulationreview.com/tokyo\"\n    },\n    {\n      \"keywords\": [\n        \"paris\",\n        \"population\"\n      ],\n      \"title\": \"Paris City Statistics & Inhabitants\",\n      \"snippet\": \"Paris proper has a population of approximately 2,160,000 inhabitants within its 105.4 square kilometer administrative area.\",\n      \"source\": \"https://insee.fr/en/statistiques/paris\"\n    }\n  ]\n}",
       "error": null,
-      "step_duration_ms": 659.42
+      "step_duration_ms": 778.56
     },
     {
       "step_number": 2,
@@ -71,12 +71,12 @@
           "raw_result": 6.481481481481482
         },
         "error": null,
-        "execution_time_ms": 0.24,
+        "execution_time_ms": 0.11,
         "retry_attempt": 0
       },
       "observation": "{\n  \"expression\": \"14000000 / 2160000\",\n  \"result\": 6.48,\n  \"raw_result\": 6.481481481481482\n}",
       "error": null,
-      "step_duration_ms": 15.09
+      "step_duration_ms": 6.26
     },
     {
       "step_number": 3,
@@ -86,12 +86,12 @@
       "tool_call": null,
       "observation": null,
       "error": null,
-      "step_duration_ms": 26.97
+      "step_duration_ms": 4.98
     }
   ],
   "final_answer": "Tokyo's prefecture population is approximately 14,000,000 and Paris proper has approximately 2,160,000 residents. Tokyo's population is 6.48 times that of Paris.",
   "failure_reason": null,
-  "start_time": 1793560617.0016181,
-  "end_time": 1793560617.7757542,
-  "total_duration_ms": 774.14
+  "start_time": 1793561644.3064601,
+  "end_time": 1793561645.1189826,
+  "total_duration_ms": 812.52
 }
